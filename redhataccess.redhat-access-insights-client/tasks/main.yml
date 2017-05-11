@@ -11,12 +11,7 @@
 - stat: path=/etc/redhat-access-insights/.unregistered
   register: unreg
 
-- name: Display all variables/facts known for a host
-  debug:
-    var: hostvars[inventory_hostname]
-    verbosity: 4
-
 # Only register if this system hasn't been registered before
 - name: Register to the Red Hat Access Insights Service
-  command: redhat-access-insights --register creates=/etc/redhat-access-insights/.registered --group=labs-console
+  command: redhat-access-insights --register creates=/etc/redhat-access-insights/.registered --group=labs-console --display-name={{ hostvars[inventory_hostname].ansible_ssh_host }}
   when: unreg.stat.exists == false
