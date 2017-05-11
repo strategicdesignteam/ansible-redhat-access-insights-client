@@ -11,8 +11,12 @@
 - stat: path=/etc/redhat-access-insights/.unregistered
   register: unreg
 
+- name: Display all variables/facts known for a host
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 4
+
 # Only register if this system hasn't been registered before
-- debug: var="{{ hostvars['localhost'] }}"
 - name: Register to the Red Hat Access Insights Service
   command: redhat-access-insights --register creates=/etc/redhat-access-insights/.registered --group=labs-console
   when: unreg.stat.exists == false
