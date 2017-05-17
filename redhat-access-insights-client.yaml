@@ -3,4 +3,4 @@
   - { role: redhataccess.redhat-access-insights-client, when: ansible_os_family == 'RedHat' }
   
 - set_fact:
-  insights_id: "{{ lookup('file', '/etc/redhat-access-insights/machine-id') }}"
+    insights_id: "{{ lookup('file', '/etc/redhat-access-insights/machine-id') }}"
