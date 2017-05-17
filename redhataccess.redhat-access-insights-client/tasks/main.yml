@@ -15,6 +15,3 @@
 - name: Register to the Red Hat Access Insights Service
   command: redhat-access-insights --register creates=/etc/redhat-access-insights/.registered --group=labs-console --display-name="{{ hostvars[inventory_hostname].ec2_tag_Name }}"
   when: unreg.stat.exists == false
-  
-- set_fact:
-  insights_id: "{{ lookup('file', '/etc/redhat-access-insights/machine-id') }}"
