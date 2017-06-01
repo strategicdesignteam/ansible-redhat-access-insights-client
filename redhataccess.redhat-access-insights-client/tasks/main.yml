@@ -13,6 +13,6 @@
 
 # Only register if this system hasn't been registered before
 - name: Register to the Red Hat Access Insights Service
-  command: redhat-access-insights --register creates=/etc/redhat-access-insights/.registered --group=labs-console --display-name="{{ hostvars[inventory_hostname].ec2_tag_Name }}"
+  command: redhat-access-insights --register creates=/etc/redhat-access-insights/.registered --group=infrastructure_{{ infrastructure_id }} --display-name="{{ hostvars[inventory_hostname].ec2_tag_Name }}"
   when: unreg.stat.exists == false
  
